@@ -178,3 +178,5 @@ AUTHENTICATION_BACKENDS = (
 )
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # new
+
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
