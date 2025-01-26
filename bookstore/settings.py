@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "allauth", # new
-    "allauth.account", # new
+    "allauth.account", # 
+    "debug_toolbar",
     # Local apps
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'allauth.account.middleware.AccountMiddleware',  # allauth
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware", #django-toolbar
 ]
 
 ROOT_URLCONF = 'bookstore.urls'
@@ -185,3 +187,9 @@ AUTHENTICATION_BACKENDS = (
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # new
 
 DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
+
+
+# django-debug-toolbar
+import socket
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
