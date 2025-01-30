@@ -14,6 +14,9 @@ class Book(models.Model):
     cover = models.ImageField(upload_to="covers/", blank=True)
 
     class Meta: # new
+        indexes = [
+            models.Index(fields=["id"], name="id_index"),
+        ]
         permissions = [
             ("special_status", "can read all books"),
         ]
